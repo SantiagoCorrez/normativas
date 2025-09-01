@@ -1,0 +1,28 @@
+<div class="normativas-container">
+  <h2>Gestión de Normativas</h2>
+  <button mat-raised-button color="primary" routerLink="/admin/normativas/new">
+    <mat-icon>add</mat-icon> Añadir Normativa
+  </button>
+
+  <mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="titulo">
+      <mat-header-cell *matHeaderCellDef>Título</mat-header-cell>
+      <mat-cell *matCellDef="let normativa">{{ normativa.titulo }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+      <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+      <mat-cell *matCellDef="let normativa">
+        <button mat-icon-button color="accent" [routerLink]="['/admin/normativas', normativa.id]">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteNormativa(normativa.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="['titulo', 'acciones']"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ['titulo', 'acciones']"></mat-row>
+  </mat-table>
+</div>

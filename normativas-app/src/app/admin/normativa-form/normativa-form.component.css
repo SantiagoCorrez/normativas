@@ -1,0 +1,107 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  background: #f4f6fb;
+  padding: 40px 0;
+}
+
+mat-card {
+  width: 100%;
+  max-width: 650px;
+  padding: 32px 28px 28px 28px;
+  border-radius: 14px;
+  box-shadow: 0 6px 32px rgba(0,0,0,0.10);
+  background: #fff;
+}
+
+mat-card-title {
+  font-size: 1.35rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 16px;
+  color: #2d3a4b;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.quill-editor-container {
+  margin-bottom: 18px;
+}
+
+.quill-editor-container label {
+  font-weight: 500;
+  margin-bottom: 6px;
+  display: block;
+  color: #2d3a4b;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 12px 0;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+button[mat-button] {
+  width: 100%;
+  color: #2d3a4b;
+}
+
+@media (max-width: 700px) {
+  mat-card {
+    max-width: 98vw;
+    padding: 18px 6px;
+  }
+}
+
+.quill-editor-container {
+  margin-bottom: 18px;
+}
+
+.quill-editor-container label {
+  font-weight: 500;
+  margin-bottom: 6px;
+  display: block;
+  color: #2d3a4b;
+}
+
+.quill-editor {
+  background: #fafbfc;
+  border-radius: 6px;
+  border: 1px solid #cfd8dc;
+  min-height: 300px;
+  font-size: 1rem;
+  padding: 0 8px;
+  transition: border-color 0.2s;
+}
+
+.quill-editor:focus-within {
+  border-color: #1976d2;
+  box-shadow: 0 0 0 2px #1976d233;
+}
+
+.ql-toolbar {
+  border-radius: 6px 6px 0 0;
+  border: none;
+  background: #f4f6fb;
+  border-bottom: 1px solid #cfd8dc;
+}
+
+.ql-container {
+  border-radius: 0 0 6px 6px;
+  border: none;
+  min-height: 220px;
+  background: transparent;
+}

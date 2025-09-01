@@ -1,0 +1,19 @@
+@if (isLogged) {
+  <mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+      <a routerLink="/admin/normativas">Normativas</a><br>
+      <a routerLink="/admin/categorias">Categorias</a><br>
+      <a routerLink="/admin/subcategorias">Subcategorias</a><br>
+      <a routerLink="/admin/usuarios">Usuarios</a><br>
+
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <button matButton (click)="sidenav.toggle()">Menu</button>
+
+      <router-outlet />
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+} @else {
+  <router-outlet />
+}
+

@@ -1,0 +1,125 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ isEditMode ? 'Editar Normativa' : 'Crear Nueva Normativa' }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="normativaForm" (ngSubmit)="onSubmit()">
+
+      <mat-form-field appearance="fill">
+        <mat-label>Número del acto</mat-label>
+        <input matInput formControlName="numero_acto" required placeholder="Ej. Decreto 015, Resolución 120">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Tipo de acto</mat-label>
+        <mat-select formControlName="tipo_acto" required>
+          <mat-option value="Decreto">Decreto</mat-option>
+          <mat-option value="Acuerdo">Acuerdo</mat-option>
+          <mat-option value="Resolución">Resolución</mat-option>
+          <mat-option value="Circular">Circular</mat-option>
+          <mat-option value="Auto">Auto</mat-option>
+          <mat-option value="Otro">Otro</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Fecha de expedición</mat-label>
+        <input matInput formControlName="fecha_expedicion" required placeholder="dd/mm/aaaa" type="date">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Dependencia que lo expide</mat-label>
+        <mat-select formControlName="dependencia_expide" required>
+          <mat-option value="Despacho del Gobernador">Despacho del Gobernador</mat-option>
+          <mat-option value="Oficina de Control Interno">Oficina de Control Interno</mat-option>
+          <mat-option value="Oficina de Control Disciplinario Interno">Oficina de Control Disciplinario Interno</mat-option>
+          <mat-option value="Unidad Administrativa Especial para la Gestión del Riesgo de Desastres, adscrita al Despacho del Gobernador">Unidad Administrativa Especial para la Gestión del Riesgo de Desastres, adscrita al Despacho del Gobernador</mat-option>
+          <mat-option value="Oficina Asesora de Prensa y Comunicaciones">Oficina Asesora de Prensa y Comunicaciones</mat-option>
+          <mat-option value="Consejo de Gobierno">Consejo de Gobierno</mat-option>
+          <mat-option value="Consejo Superior de Política Fiscal de Cundinamarca – CONFISCUN">Consejo Superior de Política Fiscal de Cundinamarca – CONFISCUN</mat-option>
+          <mat-option value="Consejo de Política Económica y Social de Cundinamarca – CONPESCUN">Consejo de Política Económica y Social de Cundinamarca – CONPESCUN</mat-option>
+          <mat-option value="Consejo Territorial de Planeación">Consejo Territorial de Planeación</mat-option>
+          <mat-option value="Consejo Departamental de Política Social de Cundinamarca – CODEPS">Consejo Departamental de Política Social de Cundinamarca – CODEPS</mat-option>
+          <mat-option value="Consejo Departamental de Archivos de Cundinamarca">Consejo Departamental de Archivos de Cundinamarca</mat-option>
+          <mat-option value="Secretaría de Prospectiva e Integración Territorial">Secretaría de Prospectiva e Integración Territorial</mat-option>
+          <mat-option value="Secretaría de Hacienda">Secretaría de Hacienda</mat-option>
+          <mat-option value="Secretaría General y de Cercanía al Ciudadano">Secretaría General y de Cercanía al Ciudadano</mat-option>
+          <mat-option value="Secretaría Jurídica">Secretaría Jurídica</mat-option>
+          <mat-option value="Secretaría de Gobierno y Seguridad Ciudadana">Secretaría de Gobierno y Seguridad Ciudadana</mat-option>
+          <mat-option value="Secretaría de lo Social y la Familia">Secretaría de lo Social y la Familia</mat-option>
+          <mat-option value="Secretaría de la Mujer y Equidad de Género">Secretaría de la Mujer y Equidad de Género</mat-option>
+          <mat-option value="Secretaría de Salud">Secretaría de Salud</mat-option>
+          <mat-option value="Secretaría de Educación">Secretaría de Educación</mat-option>
+          <mat-option value="Secretaría de Vivienda">Secretaría de Vivienda</mat-option>
+          <mat-option value="Secretaría del Agrocampesinado">Secretaría del Agrocampesinado</mat-option>
+          <mat-option value="Secretaría de Bienestar Verde">Secretaría de Bienestar Verde</mat-option>
+          <mat-option value="Secretaría de Energías y Minería Sostenible">Secretaría de Energías y Minería Sostenible</mat-option>
+          <mat-option value="Secretaría de Ciencia, Tecnología e Innovación">Secretaría de Ciencia, Tecnología e Innovación</mat-option>
+          <mat-option value="Secretaría de Transformación Digital">Secretaría de Transformación Digital</mat-option>
+          <mat-option value="Secretaría de Movilidad Contemporánea">Secretaría de Movilidad Contemporánea</mat-option>
+          <mat-option value="Departamento Administrativo de la Función Pública de Cundinamarca">Departamento Administrativo de la Función Pública de Cundinamarca</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Epígrafe</mat-label>
+        <input matInput formControlName="epigrafe" required placeholder="Resumen corto y claro de qué regula">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Estado del acto</mat-label>
+        <mat-select formControlName="estado_acto" required>
+          <mat-option value="Vigente">Vigente</mat-option>
+          <mat-option value="Derogado">Derogado</mat-option>
+          <mat-option value="Modificado">Modificado</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Observaciones</mat-label>
+        <textarea matInput formControlName="observaciones" placeholder="Ej. 'Modifica la Resolución 050 de 2023'"></textarea>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Título</mat-label>
+        <input matInput formControlName="titulo" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Categoría</mat-label>
+        <mat-select formControlName="categoria_id" required>
+          @for (categoria of categorias; track $index) {
+          <mat-option [value]="categoria.id">
+            {{ categoria.nombre }}
+          </mat-option>
+          }
+
+        </mat-select>
+      </mat-form-field>
+      @if (subcategorias.length > 0) {
+      <mat-form-field appearance="fill">
+        <mat-label>Subcategoría</mat-label>
+        <mat-select formControlName="subcategoria_id" required>
+          @for (subcategoria of subcategorias; track $index) {
+          <mat-option [value]="subcategoria.id">
+            {{ subcategoria.nombre }}
+          </mat-option>
+          }
+
+        </mat-select>
+      </mat-form-field>
+
+      }
+
+      <div class="quill-editor-container">
+        <label>Contenido de la Normativa</label>
+        <quill-editor formControlName="normativa" [styles]="{ height: '300px' }"></quill-editor>
+      </div>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="!normativaForm.valid">
+        {{ isEditMode ? 'Actualizar' : 'Crear' }}
+      </button>
+      <button mat-button routerLink="/admin/normativas">Cancelar</button>
+    </form>
+  </mat-card-content>
+</mat-card>

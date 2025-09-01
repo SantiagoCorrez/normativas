@@ -1,0 +1,72 @@
+<div class="public-container">
+    <mat-card class="search-card">
+        <mat-card-header>
+            <mat-card-title>Buscador de Normativas</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>Buscar por título o contenido</mat-label>
+                    <input matInput formControlName="q">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Categoría</mat-label>
+                    <mat-select formControlName="categoria_id">
+                        <mat-option [value]="null">Todas</mat-option>
+                        @for (categoria of categorias; track $index) {
+                        <mat-option [value]="categoria.id">
+                            {{ categoria.nombre }}
+                        </mat-option>
+                        }
+
+                    </mat-select>
+                </mat-form-field>
+                @if (subcategorias.length > 0) {
+                <mat-form-field appearance="fill">
+                    <mat-label>Subcategoría</mat-label>
+                    <mat-select formControlName="subcategoria_id">
+                        <mat-option [value]="null">Todas</mat-option>
+                        @for (subcategoria of subcategorias; track $index) {
+                        <mat-option [value]="subcategoria.id">
+                            {{ subcategoria.nombre }}
+                        </mat-option>
+                        }
+
+                    </mat-select>
+                </mat-form-field>
+                }
+
+                <button mat-raised-button color="primary" type="submit">Buscar</button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+    @if (normativas.length > 0) {
+    <div class="normativas-list">
+        @for (normativa of normativas; track $index) {
+        <mat-card class="normativa-card">
+            <mat-card-header>
+                <mat-card-title>{{ normativa.titulo }}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div [innerHTML]="normativa.epigrafe | slice:0:250"></div>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button color="primary" [routerLink]="['/normativas', normativa.id]">
+                    Ver completa
+                </button>
+            </mat-card-actions>
+        </mat-card>
+        }
+
+    </div>
+    }
+    @if(normativas.length === 0) {
+    <mat-card class="no-results">
+        <mat-card-content>
+            No se encontraron normativas que coincidan con la búsqueda.
+        </mat-card-content>
+    </mat-card>
+    }
+
+</div>

@@ -1,0 +1,52 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: #f4f6fb;
+  padding: 32px 0;
+}
+
+mat-card {
+  width: 95%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 28px 28px 28px;
+  border-radius: 14px;
+  box-shadow: 0 6px 32px rgba(0,0,0,0.10);
+  background: #fff;
+}
+
+mat-card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: left;
+  margin-bottom: 18px;
+  color: #2d3a4b;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 18px;
+}
+
+button[type="submit"] {
+  padding: 10px 28px;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.error-message, mat-error {
+  color: #d32f2f;
+  font-size: 0.97em;
+  margin-bottom: 8px;
+  text-align: left;
+}
+.normativas-list{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.normativa-card {
+  width: 45%;
+}

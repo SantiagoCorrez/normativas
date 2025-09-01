@@ -1,0 +1,61 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: #f4f6fb;
+}
+
+.example-container {
+  height: 100vh;
+  background: #f4f6fb;
+}
+
+mat-sidenav {
+  width: 220px;
+  background: #263238;
+  color: #fff;
+  padding: 32px 0 0 0;
+  box-shadow: 2px 0 8px rgba(44,62,80,0.08);
+}
+
+mat-sidenav a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 14px 28px;
+  font-size: 1.08rem;
+  font-weight: 500;
+  border-left: 4px solid transparent;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+mat-sidenav a:hover,
+mat-sidenav a.active {
+  background: #37474f;
+  border-left: 4px solid #1976d2;
+  color: #fff;
+}
+
+mat-sidenav-content {
+  padding: 32px 24px;
+  min-height: 100vh;
+  background: #f4f6fb;
+}
+
+button[matButton] {
+  margin-bottom: 18px;
+  background: #1976d2;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.04);
+}
+
+@media (max-width: 800px) {
+  mat-sidenav {
+    width: 160px;
+    padding-top: 16px;
+  }
+  mat-sidenav-content {
+    padding: 16px 4px;
+  }
+}

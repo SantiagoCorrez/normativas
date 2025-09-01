@@ -1,0 +1,67 @@
+.normativas-container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 6px 32px rgba(0,0,0,0.10);
+  padding: 32px 28px 28px 28px;
+}
+
+.normativas-container h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2d3a4b;
+  margin-bottom: 24px;
+}
+
+.normativas-container button[mat-raised-button] {
+  margin-bottom: 24px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+mat-table {
+  width: 100%;
+  background: #fafbfc;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.04);
+}
+
+mat-header-cell, mat-cell {
+  padding: 16px 12px;
+  font-size: 1rem;
+}
+
+mat-header-cell {
+  background: #f4f6fb;
+  font-weight: 600;
+  color: #2d3a4b;
+  border-bottom: 2px solid #e0e3e8;
+}
+
+mat-cell {
+  border-bottom: 1px solid #e0e3e8;
+}
+
+mat-row:last-child mat-cell {
+  border-bottom: none;
+}
+
+button[mat-icon-button] {
+  margin-right: 8px;
+}
+
+button[mat-icon-button]:last-child {
+  margin-right: 0;
+}
+
+@media (max-width: 700px) {
+  .normativas-container {
+    padding: 12px 2px;
+  }
+  mat-header-cell, mat-cell {
+    padding: 10px 4px;
+    font-size: 0.97rem;
+  }
+}

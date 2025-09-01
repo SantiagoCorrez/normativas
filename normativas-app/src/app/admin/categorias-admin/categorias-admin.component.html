@@ -1,0 +1,42 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Gestión de Categorías</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="categoriaForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre de la Categoría</mat-label>
+        <input matInput formControlName="nombre" required>
+        <mat-error *ngIf="categoriaForm.get('nombre')?.hasError('required')">El nombre es obligatorio.</mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!categoriaForm.valid">
+        {{ isEditMode ? 'Actualizar' : 'Crear' }}
+      </button>
+      <button *ngIf="isEditMode" mat-button (click)="cancelEdit()">Cancelar</button>
+    </form>
+
+    <mat-divider class="divider"></mat-divider>
+
+    <mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="nombre">
+        <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
+        <mat-cell *matCellDef="let categoria">{{ categoria.nombre }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="acciones">
+        <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+        <mat-cell *matCellDef="let categoria">
+          <button mat-icon-button color="accent" (click)="editCategoria(categoria)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteCategoria(categoria.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="['nombre', 'acciones']"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: ['nombre', 'acciones']"></mat-row>
+    </mat-table>
+  </mat-card-content>
+</mat-card>

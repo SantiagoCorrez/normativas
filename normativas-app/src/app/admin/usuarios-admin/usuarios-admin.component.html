@@ -1,0 +1,61 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Gestión de Usuarios</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre" required>
+        <mat-error *ngIf="userForm.get('nombre')?.hasError('required')">El nombre es obligatorio.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" required>
+        <mat-error *ngIf="userForm.get('email')?.hasError('required')">El email es obligatorio.</mat-error>
+        <mat-error *ngIf="userForm.get('email')?.hasError('email')">Formato de email inválido.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Contraseña</mat-label>
+        <input matInput formControlName="password" type="password" [required]="!isEditMode">
+        <mat-hint *ngIf="isEditMode">Dejar en blanco para no cambiar</mat-hint>
+      </mat-form-field>
+      
+      <button mat-raised-button color="primary" type="submit" [disabled]="!userForm.valid">
+        {{ isEditMode ? 'Actualizar' : 'Crear' }} Usuario
+      </button>
+      <button *ngIf="isEditMode" mat-button (click)="cancelEdit()">Cancelar</button>
+    </form>
+    
+    <mat-divider class="divider"></mat-divider>
+
+    <mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="nombre">
+        <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
+        <mat-cell *matCellDef="let user">{{ user.nombre }}</mat-cell>
+      </ng-container>
+      
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+        <mat-cell *matCellDef="let user">{{ user.email }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="acciones">
+        <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+        <mat-cell *matCellDef="let user">
+          <button mat-icon-button color="accent" (click)="editUser(user)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteUser(user.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="['nombre', 'email', 'acciones']"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: ['nombre', 'email', 'acciones']"></mat-row>
+    </mat-table>
+  </mat-card-content>
+</mat-card>
