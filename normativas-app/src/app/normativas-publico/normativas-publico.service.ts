@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class NormativasPublicoService {
-  private apiUrl = 'http://localhost:5000/api/normativas';
+  private apiUrl = '/api/normativas';
 
   constructor(private http: HttpClient) { }
 

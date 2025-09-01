@@ -7,7 +7,7 @@ import { AuthService } from '../auth/auth.service';
   providedIn: 'root'
 })
 export class NormativasService {
-  private apiUrl = 'http://localhost:5000/api/admin/normativas';
+  private apiUrl = '/api/admin/normativas';
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 

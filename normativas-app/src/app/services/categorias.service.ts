@@ -7,7 +7,7 @@ import { AuthService } from '../auth/auth.service';
   providedIn: 'root'
 })
 export class CategoriasService {
-  private apiUrl = 'http://localhost:5000/api/admin/categorias'; // Nueva ruta para el backend
+  private apiUrl = '/api/admin/categorias'; // Nueva ruta para el backend
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
@@ -37,6 +37,6 @@ export class CategoriasService {
   }
 
   getCategoriasPublico(): Observable<any[]> {
-    return this.http.get<any[]>('http://localhost:5000/api/categorias');
+    return this.http.get<any[]>('/api/categorias');
   }
 }
