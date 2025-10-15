@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./back
+    container_name: normativas-backend
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - db
+    networks:
+      - app-network
+
+  frontend:
+    build: ./normativas-app
+    container_name: normativas-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+  db:
+    image: postgres:13
+    container_name: normativas-db
+    environment:
+      POSTGRES_DB: tu_base_de_datos
+      POSTGRES_USER: tu_usuario
+      POSTGRES_PASSWORD: tu_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
