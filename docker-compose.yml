@@ -15,7 +15,7 @@ services:
     build: ./normativas-app
     container_name: normativas-frontend
     ports:
-      - "80:80"
+      - "4808:80"
     depends_on:
       - backend
     networks:
@@ -25,9 +25,9 @@ services:
     image: postgres:13
     container_name: normativas-db
     environment:
-      POSTGRES_DB: tu_base_de_datos
-      POSTGRES_USER: tu_usuario
-      POSTGRES_PASSWORD: tu_password
+      POSTGRES_DB: normativas
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Asdf123.
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
