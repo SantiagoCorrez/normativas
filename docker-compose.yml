@@ -30,6 +30,7 @@ services:
       POSTGRES_PASSWORD: Asdf123.
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./basename.sql:/docker-entrypoint-initdb.d/basename.sql
     networks:
       - app-network
 
