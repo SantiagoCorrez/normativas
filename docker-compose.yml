@@ -15,7 +15,7 @@ services:
     build: ./normativas-app
     container_name: normativas-frontend
     ports:
-      - "4808:80"
+      - "4808:443"
     depends_on:
       - backend
     networks:
