@@ -10,12 +10,14 @@ services:
       - db
     networks:
       - app-network
+    ports:
+      - "5000:5000"
 
   frontend:
     build: ./normativas-app
     container_name: normativas-frontend
     ports:
-      - "4808:443"
+      - "4808:80"
     depends_on:
       - backend
     networks:

@@ -26,6 +26,6 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /usr/src/app/dist/normativas-app /usr/share/nginx/html
 
 # Exponer puerto
-EXPOSE 443
+EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]
