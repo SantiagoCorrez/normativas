@@ -8,7 +8,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 # Instalar dependencias
-RUN npm install
+RUN npm install --force
 
 # Copiar el resto del código
 COPY . .
@@ -26,6 +26,6 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /usr/src/app/dist/normativas-app /usr/share/nginx/html
 
 # Exponer puerto
-EXPOSE 80
+EXPOSE 443
 
 CMD ["nginx", "-g", "daemon off;"]
